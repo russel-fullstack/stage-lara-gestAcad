@@ -74,7 +74,7 @@
                     <td class="px-4 py-3 text-right">
                         <div class="flex items-center justify-end gap-2">
                             <form action="{{ route('academic.academic-years.toggle', $year) }}" method="POST" class="inline">
-                                
+
                                 @method('PATCH')
                                 <button type="submit"
                                     class="px-2.5 py-1.5 text-xs font-medium border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 transition-colors">
@@ -85,6 +85,17 @@
                                class="px-2.5 py-1.5 text-xs font-medium border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 transition-colors">
                                 Modifier
                             </a>
+                            @if(!$year->est_active)
+                            <form action="{{ route('academic.academic-years.destroy', $year->id) }}" method="post">
+
+                                @method('DELETE')
+                                <button type="submit"
+                                        class="px-2.5 py-1.5 text-xs font-medium border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
+                                        onclick="return confirm('voulez vous vraim€nt supprimer?')">
+                                    Supprimer
+                                </button>
+                            </form>
+                            @endif
                         </div>
                     </td>
                 </tr>
