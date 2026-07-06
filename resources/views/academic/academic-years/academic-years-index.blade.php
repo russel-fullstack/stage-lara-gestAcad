@@ -89,11 +89,7 @@
                             <form action="{{ route('academic.academic-years.destroy', $year->id) }}" method="post">
 
                                 @method('DELETE')
-                                <button type="submit"
-                                        class="px-2.5 py-1.5 text-xs font-medium border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
-                                        onclick="return confirm('voulez vous vraim€nt supprimer?')">
-                                    Supprimer
-                                </button>
+                                <x-confirm-delete />
                             </form>
                             @endif
                         </div>

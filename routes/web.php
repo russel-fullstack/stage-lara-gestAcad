@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Academic\ProgramController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Academic\AcademicYearController;
 
@@ -10,13 +11,11 @@ Route::prefix('academic')->name('academic.')->group(function () {
 
     //années académiques
     Route::resource('academic-years', AcademicYearController::class)->except(['show']);
-    
-        Route::patch('academic-years/{academicYear}/toggle', [AcademicYearController::class, 'toggle'])->name('academic-years.toggle');
+
+    Route::patch('academic-years/{academicYear}/toggle', [AcademicYearController::class, 'toggle'])->name('academic-years.toggle');
 
     //filières
-    Route::get('programs', fn () => view('academic.programs.programs-index'))->name('programs.index');
-    Route::get('programs/create', fn () => view('academic.programs.programs-create'))->name('programs.create');
-    Route::get('programs/{id}/edit', fn ($id) => view('academic.programs.programs-edit', compact('id')))->name('programs.edit');
+    Route::resource('programs', ProgramController::class)->except(['show']);
 
     //spécialités
     Route::get('specialities', fn () => view('academic.specialities.specialities-index'))->name('specialities.index');

@@ -112,6 +112,11 @@
             </header>
 
  {{-- Flash messages --}}
+            @if(session()->has("success"))
+                <x-alert type="success">
+                    {{ session('success') }}
+                </x-alert>
+            @endif
     {{-- Contenu --}}
             <main class="flex-1 overflow-y-auto p-6">
                 @yield('content')
