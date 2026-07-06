@@ -41,7 +41,8 @@
 
                 <p class="px-3 pt-4 pb-1 text-xs font-semibold uppercase tracking-widest text-gray-400">Académique</p>
 
-                <x-nav-link href="/academic/academic-years" :active="request()->is('academic/academic-years*')">
+                <x-nav-link href="{{ route('academic.academic-years.index') }}"
+                            :active="request()->is('academic/academic-years*')">
                     <x-slot name="icon">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
@@ -50,7 +51,7 @@
                     Années Académiques
                 </x-nav-link>
 
-                <x-nav-link href="/academic/programs" :active="request()->is('academic/programs*')">
+                <x-nav-link href="{{ route('academic.programs.index') }}" :active="request()->is('academic/programs*')">
                     <x-slot name="icon">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
@@ -59,7 +60,8 @@
                     Filières
                 </x-nav-link>
 
-                <x-nav-link href="/academic/specialities" :active="request()->is('academic/specialities*')">
+                <x-nav-link href="{{ route('academic.specialties.index') }}"
+                            :active="request()->is('academic/specialties*')">
                     <x-slot name="icon">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
@@ -68,7 +70,7 @@
                     Spécialités
                 </x-nav-link>
 
-                <x-nav-link href="/academic/levels" :active="request()->is('academic/levels*')">
+                <x-nav-link href="{{ route('academic.levels.index') }}" :active="request()->is('academic/levels*')">
                     <x-slot name="icon">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M7 11l5-5m0 0l5 5m-5-5v12"/>

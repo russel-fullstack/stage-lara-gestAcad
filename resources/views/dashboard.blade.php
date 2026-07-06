@@ -61,7 +61,7 @@
         <div class="col-span-2 bg-white border border-gray-200 rounded-md p-5">
             <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-3">Accès rapides</p>
             <div class="grid grid-cols-2 gap-2">
-                @foreach ([['url' => '/academic/programs', 'label' => 'Filières'], ['url' => '/academic/specialities', 'label' => 'Spécialités'], ['url' => '/academic/levels', 'label' => 'Niveaux'], ['url' => '/academic/semesters', 'label' => 'Semestres'], ['url' => '/academic/course-units', 'label' => 'Unités d\'Enseignement'], ['url' => '/academic/academic-years', 'label' => 'Années Académiques']] as $link)
+                @foreach ([['url' => '/academic/programs', 'label' => 'Filières'], ['url' => '/academic/specialties', 'label' => 'Spécialités'], ['url' => '/academic/levels', 'label' => 'Niveaux'], ['url' => '/academic/semesters', 'label' => 'Semestres'], ['url' => '/academic/course-units', 'label' => 'Unités d\'Enseignement'], ['url' => '/academic/academic-years', 'label' => 'Années Académiques']] as $link)
                     <a href="{{ $link['url'] }}"
                         class="flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 text-sm text-gray-700 hover:border-red-300 hover:text-red-700 transition-colors">
                         <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"

@@ -5,12 +5,12 @@
     <x-page-header title="Nouvelle Spécialité" subtitle="Rattacher une spécialité à une filière." />
 
     <div class="max-w-xl bg-white border border-gray-200 rounded-md p-6">
-        <form action="/academic/specialties" method="POST" class="space-y-5">
+        <form action="{{ route('academic.specialties.store') }}" method="POST" class="space-y-5">
 
             <x-form.select
                 name="program_id"
                 label="Filière"
-                :options="[1 => 'Génie Informatique', 2 => 'Génie Civil', 3 => 'Génie Électrique']"
+                :options="$programs->pluck('libelle', 'id')->toArray()"
                 :required="true" />
 
             <div class="grid grid-cols-2 gap-4">

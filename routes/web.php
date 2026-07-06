@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Academic\ProgramController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Academic\AcademicYearController;
+use App\Http\Controllers\Academic\ProgramController;
+use App\Http\Controllers\Academic\SpecialtyController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('home'));
 Route::get('/dashboard', fn () => view('dashboard'));
@@ -18,9 +19,7 @@ Route::prefix('academic')->name('academic.')->group(function () {
     Route::resource('programs', ProgramController::class)->except(['show']);
 
     //spécialités
-    Route::get('specialities', fn () => view('academic.specialities.specialities-index'))->name('specialities.index');
-    Route::get('specialities/create', fn () => view('academic.specialities.specialities-create'))->name('specialities.create');
-    Route::get('specialities/{id}/edit', fn ($id) => view('academic.specialities.specialities-edit', compact('id')))->name('specialities.edit');
+    Route::resource('specialties', SpecialtyController::class)->except(['show']);
 
     //niveaux d'études
     Route::get('levels', fn () => view('academic.levels.levels-index'))->name('levels.index');
