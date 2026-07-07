@@ -41,9 +41,11 @@
                     <td class="px-4 py-3 text-gray-600">{{ $specialty->niveaux }}</td>
                     <td class="px-4 py-3 text-right">
                         <div class="flex specialtys-center justify-end gap-2">
-                            <a href="/academic/specialties/{{ $specialty->id }}/edit"
+                            <a href="{{ route('academic.specialties.edit', $specialty) }}"
                                class="px-2.5 py-1.5 text-xs font-medium border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 transition-colors">Modifier</a>
-                                <button type="submit" class="px-2.5 py-1.5 text-xs font-medium border border-gray-300 rounded-md text-gray-400 hover:text-red-600 hover:border-red-300 transition-colors">Supprimer</button>
+                            <form action="{{ route('academic.specialties.destroy', $specialty) }}" method="post">
+                                @method('DELETE')
+                                <x-confirm-delete></x-confirm-delete>
                             </form>
                         </div>
                     </td>

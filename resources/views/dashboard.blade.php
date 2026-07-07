@@ -48,7 +48,7 @@
                 <x-bagde color="green">Active</x-bagde>
             </div>
             <p class="text-xs text-gray-500 mb-1">01 Sept. 2025 → 30 Juin 2026</p>
-            <a href="/academic/academic-years"
+            <a href="{{ route('academic.academic-years.index') }}"
                 class="inline-flex items-center gap-1 mt-3 text-xs text-red-600 hover:underline font-medium">
                 Gérer les années
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
