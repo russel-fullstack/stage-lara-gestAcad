@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Academic;
+namespace App\Http\Requests\Academic\AcademicYear;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreSpecialtyRequest extends FormRequest
+class StoreAcademicYearRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,14 @@ class StoreSpecialtyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'program_id' => ['required', 'exists:programs,id'],
-            'code' => ['required', 'string', 'max:20', Rule::unique('specialties', 'code')],
-            'libelle' => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string'],
+            'libelle' => ['required',
+            'string',
+            'max:50',
+            Rule::unique('academic_years')],
+
+            'date_debut' => ['required', 'date'],
+            'date_fin' => ['required', 'date', 'after:date_debut'],
+            'est_active' => ['boolean'],
         ];
     }
 }

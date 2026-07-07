@@ -56,14 +56,14 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
-                @foreach([
-                    ['id'=>1,'code'=>'UE-INF','libelle'=>'Informatique Fondamentale','type'=>'Fondamentale','credits'=>6,'sem'=>'S1','spec'=>null,'pct'=>'20%'],
-                    ['id'=>2,'code'=>'UE-ALG','libelle'=>'Algorithmique','type'=>'Fondamentale','credits'=>4,'sem'=>'S1','spec'=>null,'pct'=>'13%'],
-                    ['id'=>3,'code'=>'UE-MATH','libelle'=>'Mathématiques Discrètes','type'=>'Fondamentale','credits'=>4,'sem'=>'S1','spec'=>null,'pct'=>'13%'],
-                    ['id'=>4,'code'=>'UE-SYS','libelle'=>'Systèmes d\'Exploitation','type'=>'Fondamentale','credits'=>4,'sem'=>'S2','spec'=>null,'pct'=>'13%'],
-                    ['id'=>5,'code'=>'UE-WEB','libelle'=>'Développement Web','type'=>'Optionnelle','credits'=>4,'sem'=>'S3','spec'=>'Génie Logiciel','pct'=>'13%'],
-                    ['id'=>6,'code'=>'UE-NET','libelle'=>'Administration Réseaux','type'=>'Optionnelle','credits'=>4,'sem'=>'S3','spec'=>'Réseaux & Systèmes','pct'=>'13%'],
-                ] as $ue)
+            @forelse([
+                ['id'=>1,'code'=>'UE-INF','libelle'=>'Informatique Fondamentale','type'=>'Fondamentale','credits'=>6,'sem'=>'S1','spec'=>null,'pct'=>'20%'],
+                ['id'=>2,'code'=>'UE-ALG','libelle'=>'Algorithmique','type'=>'Fondamentale','credits'=>4,'sem'=>'S1','spec'=>null,'pct'=>'13%'],
+                ['id'=>3,'code'=>'UE-MATH','libelle'=>'Mathématiques Discrètes','type'=>'Fondamentale','credits'=>4,'sem'=>'S1','spec'=>null,'pct'=>'13%'],
+                ['id'=>4,'code'=>'UE-SYS','libelle'=>'Systèmes d\'Exploitation','type'=>'Fondamentale','credits'=>4,'sem'=>'S2','spec'=>null,'pct'=>'13%'],
+                ['id'=>5,'code'=>'UE-WEB','libelle'=>'Développement Web','type'=>'Optionnelle','credits'=>4,'sem'=>'S3','spec'=>'Génie Logiciel','pct'=>'13%'],
+                ['id'=>6,'code'=>'UE-NET','libelle'=>'Administration Réseaux','type'=>'Optionnelle','credits'=>4,'sem'=>'S3','spec'=>'Réseaux & Systèmes','pct'=>'13%'],
+            ] as $ue)
                 <tr class="hover:bg-gray-50 transition-colors">
                     <td class="px-4 py-3 font-mono text-xs text-gray-500">{{ $ue['code'] }}</td>
                     <td class="px-4 py-3 font-medium text-gray-900">{{ $ue['libelle'] }}</td>
@@ -89,7 +89,12 @@
                         </div>
                     </td>
                 </tr>
-                @endforeach
+            @empty
+                <td colspan="5">
+                    <x-empty-field action-url="{{ route('academic.course-units.create') }}"
+                                   action-label="Ajouter une Unité d'enseignement"/>
+                </td>
+            @endforelse
             </tbody>
         </table>
     </div>

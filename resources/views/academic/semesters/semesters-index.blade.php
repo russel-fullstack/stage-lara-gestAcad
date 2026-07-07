@@ -33,12 +33,12 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
-                @foreach([
-                    ['id'=>1,'num'=>'S1','libelle'=>'Semestre 1','niveau'=>'Niveau 1','credits'=>30,'ue'=>5],
-                    ['id'=>2,'num'=>'S2','libelle'=>'Semestre 2','niveau'=>'Niveau 1','credits'=>30,'ue'=>5],
-                    ['id'=>3,'num'=>'S3','libelle'=>'Semestre 3','niveau'=>'Niveau 2','credits'=>30,'ue'=>6],
-                    ['id'=>4,'num'=>'S4','libelle'=>'Semestre 4','niveau'=>'Niveau 2','credits'=>30,'ue'=>6],
-                ] as $item)
+            @forelse([
+                ['id'=>1,'num'=>'S1','libelle'=>'Semestre 1','niveau'=>'Niveau 1','credits'=>30,'ue'=>5],
+                ['id'=>2,'num'=>'S2','libelle'=>'Semestre 2','niveau'=>'Niveau 1','credits'=>30,'ue'=>5],
+                ['id'=>3,'num'=>'S3','libelle'=>'Semestre 3','niveau'=>'Niveau 2','credits'=>30,'ue'=>6],
+                ['id'=>4,'num'=>'S4','libelle'=>'Semestre 4','niveau'=>'Niveau 2','credits'=>30,'ue'=>6],
+            ] as $item)
                 <tr class="hover:bg-gray-50 transition-colors">
                     <td class="px-4 py-3 font-mono text-xs text-gray-500">{{ $item['num'] }}</td>
                     <td class="px-4 py-3 font-medium text-gray-900">{{ $item['libelle'] }}</td>
@@ -54,7 +54,12 @@
                         </div>
                     </td>
                 </tr>
-                @endforeach
+            @empty
+                <td colspan="5">
+                    <x-empty-field action-url="{{ route('academic.academic-years.create') }}"
+                                   action-label="Ajouter une année"/>
+                </td>
+            @endforelse
             </tbody>
         </table>
     </div>

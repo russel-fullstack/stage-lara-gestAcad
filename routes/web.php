@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Academic\AcademicYearController;
+use App\Http\Controllers\Academic\LevelController;
 use App\Http\Controllers\Academic\ProgramController;
 use App\Http\Controllers\Academic\SpecialtyController;
 use Illuminate\Support\Facades\Route;
@@ -22,9 +23,7 @@ Route::prefix('academic')->name('academic.')->group(function () {
     Route::resource('specialties', SpecialtyController::class)->except(['show']);
 
     //niveaux d'études
-    Route::get('levels', fn () => view('academic.levels.levels-index'))->name('levels.index');
-    Route::get('levels/create', fn () => view('academic.levels.levels-create'))->name('levels.create');
-    Route::get('levels/{id}/edit', fn ($id) => view('academic.levels.levels-edit', compact('id')))->name('levels.edit');
+    Route::resource('levels', LevelController::class)->except(['show']);
 
     //semestres
     Route::get('semesters', fn () => view('academic.semesters.semesters-index'))->name('semesters.index');

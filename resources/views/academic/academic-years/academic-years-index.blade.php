@@ -57,7 +57,7 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
-                @foreach ( $academicYears as $year)
+            @forelse( $academicYears as $year)
 
                 {{-- Année active --}}
                 <tr class="hover:bg-gray-50 transition-colors">
@@ -96,12 +96,16 @@
                     </td>
                 </tr>
 
-
-                @endforeach
-
+            @empty
+                <td colspan="5">
+                    <x-empty-field action-url="{{ route('academic.academic-years.create') }}"
+                                   action-label="Ajouter une année"/>
+                </td>
+            @endforelse
 
             </tbody>
         </table>
     </div>
 
 @endsection
+

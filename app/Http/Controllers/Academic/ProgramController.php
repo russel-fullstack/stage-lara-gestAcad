@@ -3,15 +3,19 @@
 namespace App\Http\Controllers\Academic;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Academic\StoreProgramRequest;
-use App\Http\Requests\Academic\UpdateProgramRequest;
+use App\Http\Requests\Academic\Program\StoreProgramRequest;
+use App\Http\Requests\Academic\Program\UpdateProgramRequest;
 use App\Models\Academic\Program;
+use App\Models\Academic\Specialty;
 
 class ProgramController extends Controller
 {
     public function index() {
-        $programs = Program::latest()->paginate(5);
-        return view('academic.programs.programs-index', compact('programs'));
+        $programs = Program::with('Specialties')
+            ->latest()
+            ->paginate(5);
+        $specialties = Specialty::all();
+        return view('academic.programs.programs-index', compact('programs', 'specialties'));
     }
 
     public function create() {

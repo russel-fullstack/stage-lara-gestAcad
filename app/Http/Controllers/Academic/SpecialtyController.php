@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Academic;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Academic\StoreSpecialtyRequest;
-use App\Http\Requests\Academic\UpdateSpecialtyRequest;
+use App\Http\Requests\Academic\Specialty\StoreSpecialtyRequest;
+use App\Http\Requests\Academic\Specialty\UpdateSpecialtyRequest;
+use App\Models\Academic\Level;
 use App\Models\Academic\Program;
 use App\Models\Academic\Specialty;
 
@@ -12,11 +13,12 @@ class SpecialtyController extends Controller
 {
     public function index()
     {
-        $specialties = Specialty::with('program')
+        $specialties = Specialty::with(['program', 'levels'])
             ->latest()
             ->paginate(5);
         $programs = Program::all();
-        return view('academic.specialties.specialties-index', compact('specialties', 'programs'));
+        $levels = Level::all();
+        return view('academic.specialties.specialties-index', compact('specialties', 'programs', 'levels'));
     }
 
     public function create()

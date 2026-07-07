@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Academic;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Academic\AcademicYear\StoreAcademicYearRequest;
 use App\Models\Academic\AcademicYear;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\Academic\StoreAcademicYearRequest;
 use Illuminate\Http\Request;
 
 class AcademicYearController extends Controller

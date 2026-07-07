@@ -12,7 +12,7 @@
                 name="program_id"
                 label="Filière"
                 :options="$programs->pluck('libelle', 'id')->toArray()"
-                :selected="$specialty->program"
+                :selected="$specialty->program_id"
                 :required="true" />
 
             <div class="grid grid-cols-2 gap-4">

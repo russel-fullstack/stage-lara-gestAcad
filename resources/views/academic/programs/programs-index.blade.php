@@ -48,7 +48,7 @@
                     <td class="px-4 py-3 font-medium text-gray-900">{{ $program->libelle }}</td>
                     <td class="px-4 py-3"><x-bagde color="indigo">{{ $program->type_diplome }}</x-bagde></td>
                     <td class="px-4 py-3 text-gray-600">{{ $program->nombre_semestres }}</td>
-                    <td class="px-4 py-3 text-gray-600">3</td>
+                    <td class="px-4 py-3 text-gray-600">{{ $program->specialties->implode('libelle') }}</td>
                     <td class="px-4 py-3 text-right">
                         <div class="flex items-center justify-end gap-2">
                             <a href="{{ route('academic.programs.edit', $program) }}" class="px-2.5 py-1.5 text-xs font-medium border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 transition-colors">Modifier</a>
@@ -60,10 +60,11 @@
                     </td>
                 </tr>
 
-               @empty
-                <tr>
-                    <td colspan="6" class="px-4 py-3 text-center text-gray-500">Aucune filière trouvé</td>
-                </tr>
+            @empty
+                <td colspan="6">
+                    <x-empty-field action-url="{{ route('academic.programs.create') }}"
+                                   action-label="Ajouter une filière"/>
+                </td>
             @endforelse
             </tbody>
         </table>

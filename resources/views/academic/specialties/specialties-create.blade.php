@@ -25,7 +25,7 @@
                     class="px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-md hover:bg-red-700 transition-colors">
                     Enregistrer
                 </button>
-                <a href="/academic/specialties"
+                <a href="{{ route('academic.levels.index') }}"
                    class="px-4 py-2 text-sm text-gray-600 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
                     Annuler
                 </a>

@@ -18,8 +18,13 @@ class Program extends Model
         'type_diplome',
     ];
 
-    public function specialities(): HasMany
+    public function specialties(): HasMany
     {
         return $this->hasMany(Specialty::class);
+    }
+
+    public function levels(): HasMany
+    {
+        return $this->hasMany(Level::class);
     }
 }

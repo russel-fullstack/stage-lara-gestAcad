@@ -15,9 +15,9 @@
     <div class="mb-4">
         <select class="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500">
             <option value="">Toutes les filières</option>
-            <option value="1" selected>Génie Informatique</option>
-            <option value="2">Génie Civil</option>
-            <option value="3">Génie Électrique</option>
+            @foreach($programs as $program)
+                <option value="{{ $program->libelle }}">{{ $program->libelle }}</option>
+            @endforeach
         </select>
     </div>
 
@@ -33,12 +33,12 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
-            @foreach( $specialties as $specialty)
+            @forelse( $specialties as $specialty)
                 <tr class="hover:bg-gray-50 transition-colors">
                     <td class="px-4 py-3 font-mono text-xs text-gray-500">{{ $specialty->code }}</td>
                     <td class="px-4 py-3 font-medium text-gray-900">{{ $specialty->libelle }}</td>
                     <td class="px-4 py-3 text-gray-600">{{ $specialty->program->libelle }}</td>
-                    <td class="px-4 py-3 text-gray-600">{{ $specialty->niveaux }}</td>
+                    <td class="px-4 py-3 text-gray-600">{{ $specialty->levels->implode('libelle') }}</td>
                     <td class="px-4 py-3 text-right">
                         <div class="flex specialtys-center justify-end gap-2">
                             <a href="{{ route('academic.specialties.edit', $specialty) }}"
@@ -50,9 +50,17 @@
                         </div>
                     </td>
                 </tr>
-                @endforeach
+            @empty
+                <td colspan="5">
+                    <x-empty-field action-url="{{ route('academic.specialties.create') }}"
+                                   action-label="Ajouter une spécialité"/>
+                </td>
+            @endforelse
             </tbody>
         </table>
+        <div class="my-5 flex justify-center items-center">
+            {{ $specialties->links() }}
+        </div>
     </div>
 
 @endsection

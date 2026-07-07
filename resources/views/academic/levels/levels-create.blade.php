@@ -5,19 +5,19 @@
     <x-page-header title="Nouveau Niveau" subtitle="Ajouter un niveau d'études." />
 
     <div class="max-w-xl bg-white border border-gray-200 rounded-md p-6">
-        <form action="/academic/levels" method="POST" class="space-y-5">
+        <form action="{{ route('academic.levels.store') }}" method="POST" class="space-y-5">
 
             <x-form.select
                 name="program_id"
                 label="Filière"
-                :options="[1 => 'Génie Informatique', 2 => 'Génie Civil', 3 => 'Génie Électrique']"
+                :options="$programs->pluck('libelle', 'id')->toArray()"
                 :required="true" />
 
             <x-form.select
                 name="specialty_id"
                 label="Spécialité (optionnel — laisser vide pour tronc commun)"
-                :options="[1 => 'Génie Logiciel', 2 => 'Réseaux & Systèmes', 3 => 'Bases de Données']"
-                placeholder="Tronc commun" />
+                :options="$specialties->pluck('libelle', 'id')->toArray()"
+                placeholder="Sélectionner..."/>
 
             <div class="grid grid-cols-3 gap-4">
                 <x-form.input name="code" label="Code" placeholder="Ex : L1" :required="true" />
@@ -30,7 +30,7 @@
                     class="px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-md hover:bg-red-700 transition-colors">
                     Enregistrer
                 </button>
-                <a href="/academic/levels"
+                <a href="{{ route('academic.levels.index') }}"
                    class="px-4 py-2 text-sm text-gray-600 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
                     Annuler
                 </a>

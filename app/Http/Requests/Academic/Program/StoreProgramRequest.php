@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Academic;
+namespace App\Http\Requests\Academic\Program;
 
 use App\Enums\DiplomaType;
 use Illuminate\Contracts\Validation\ValidationRule;
